@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecodeLabs | Project 2</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #202124;
+            background: #ffffff;
+        }
+
+        header {
+            height: 56px;
+            padding: 0 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo .blue { color: #4285f4; }
+        .logo .red { color: #ea4335; }
+        .logo .yellow { color: #fbbc04; }
+        .logo .green { color: #34a853; }
+
+        .project {
+            color: #5f6368;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 28px 20px 18px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 16px 0 8px;
+        }
+
+        h1 .blue {
+            color: #4285f4;
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: #5f6368;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .status {
+            margin: 20px auto 0;
+            max-width: 800px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .online {
+            color: #188038;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .status p {
+            margin: 0;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .features {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 25px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px 10px;
+            text-align: center;
+            background: white;
+        }
+
+        .icon {
+            font-size: 26px;
+        }
+
+        .card h3 {
+            margin: 8px 0 5px;
+            font-size: 17px;
+        }
+
+        .card p {
+            margin: 0;
+            color: #5f6368;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 14px;
+            color: #5f6368;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                height: auto;
+                padding: 15px;
+            }
+
+            .project {
+                display: none;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <span class="blue">D</span><span class="red">e</span><span class="yellow">c</span><span class="green">ode</span>Labs
+    </div>
+
+    <div class="project">Cloud Computing Project 2</div>
+</header>
+
+<section class="hero">
+
+    <div class="badge">● CLOUD SERVER DEPLOYMENT</div>
+
+    <h1>
+        Welcome to <span class="blue">DecodeLabs</span>
+    </h1>
+
+    <p class="subtitle">
+        Project 2 – The Server Commander<br>
+        A custom web server deployed on AWS EC2.
+    </p>
+
+    <div class="status">
+        <div class="online">● Server Status: ONLINE</div>
+        <p>
+            This website is hosted on an Amazon Linux server and served using the Nginx web server.
+        </p>
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <div class="icon">☁️</div>
+        <h3>AWS EC2</h3>
+        <p>Cloud virtual server</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🐧</div>
+        <h3>Amazon Linux</h3>
+        <p>Server operating system</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Nginx</h3>
+        <p>Web server</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔐</div>
+        <h3>SSH</h3>
+        <p>Secure server access</p>
+    </div>
+
+</section>
+
+<footer>
+    DecodeLabs Cloud Computing Internship · Project 2 – The Server Commander
+</footer>
+
+</body>
+</html>
