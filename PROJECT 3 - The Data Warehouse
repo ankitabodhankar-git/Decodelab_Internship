@@ -1,0 +1,145 @@
+# Project 3 - The Data Warehouse
+
+## Overview
+
+This project focuses on building and working with a managed cloud database using Amazon Web Services (AWS).
+
+I provisioned a private MySQL database using Amazon RDS and securely connected it to an Amazon EC2 instance. I then created a database and an `Interns` table, applied database constraints, inserted dummy records, and verified that the data persisted successfully.
+
+---
+
+## What I Built
+
+I built a cloud-based relational database system using:
+
+- Amazon RDS for the managed MySQL database
+- Amazon EC2 as the compute environment
+- Amazon VPC for networking
+- AWS Security Groups for network access control
+- MySQL for database management
+- Linux and SSH for accessing the EC2 instance
+- SQL for creating and managing the database
+
+The final setup allows the EC2 instance to communicate with the private RDS MySQL database over TCP port 3306.
+
+---
+
+## Architecture
+
+The project follows this basic architecture:
+
+Internet
+   |
+   v
+Amazon EC2
+(Public Compute Server)
+   |
+   | TCP 3306
+   v
+Amazon RDS
+(Private MySQL Database)
+
+The RDS database was configured without public access. The EC2 instance was used as the compute environment from which the database could be accessed.
+
+---
+
+## AWS Resources Used
+
+### Amazon EC2
+
+An existing Amazon EC2 instance was used as the compute server.
+
+The EC2 instance provided:
+
+- Linux environment
+- SSH access
+- MySQL client
+- Secure connectivity to the RDS database
+
+### Amazon RDS
+
+I provisioned an Amazon RDS MySQL database with:
+
+- MySQL Community Edition
+- MySQL 8.4
+- `db.t4g.micro` instance class
+- 20 GiB storage
+- Private database access
+- Port 3306 for MySQL connections
+
+The database was deployed inside an AWS VPC using an RDS DB subnet group.
+
+---
+
+## Database Configuration
+
+I created a database named:
+
+`DecodeLabsDB`
+
+Inside the database, I created a table named:
+
+`Interns`
+
+The table contains the following fields:
+
+| Column | Description |
+|---|---|
+| InternID | Unique identifier for each intern |
+| Name | Name of the intern |
+| Role | Internship/job role |
+| Email | Email address of the intern |
+
+The table was designed using database constraints:
+
+- `PRIMARY KEY`
+- `AUTO_INCREMENT`
+- `NOT NULL`
+- `UNIQUE`
+
+These constraints help maintain data integrity and prevent invalid or duplicate data.
+
+---
+
+## Sample Database Structure
+
+The `Interns` table follows this structure:
+
+```sql
+CREATE TABLE Interns (
+    InternID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL,
+    Role VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL
+);
+
+## Challenges, Mistakes and Troubleshooting
+
+This project involved several practical troubleshooting situations while setting up AWS RDS, EC2 connectivity, MySQL, SSH, and security groups.
+
+### 1. RDS Instance Creation - Availability Zone Capacity Issue
+
+While initially creating the RDS database, the selected Availability Zone did not have enough available capacity for the requested database instance.
+
+The RDS creation attempt failed because of an AWS infrastructure capacity limitation rather than a database configuration error.
+
+#### How I Handled It
+
+I reviewed the RDS creation error and selected another available Availability Zone instead of repeatedly retrying the same configuration.
+
+The RDS instance was successfully created in:
+
+`ap-south-1c`
+
+This helped me understand that cloud resource provisioning can sometimes fail because of temporary regional or Availability Zone capacity limitations.
+
+---
+
+### 2. EC2 to RDS Connection Timeout
+
+After creating the RDS database, I initially tried connecting to MySQL from the EC2 instance.
+
+The connection failed with:
+
+```text
+ERROR 2002 (HY000): Can't connect to MySQL server ... (115)
